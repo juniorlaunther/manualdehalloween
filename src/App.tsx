@@ -668,10 +668,10 @@ export default function App() {
              <div 
                ref={testimonialRef}
                onScroll={handleTestimonialScroll}
-               className="flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 py-4 md:py-6 no-scrollbar px-4 md:px-8 lg:px-0 scroll-smooth"
+               className="flex lg:flex-wrap lg:justify-center overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 py-4 md:py-6 no-scrollbar px-4 md:px-8 lg:px-0 scroll-smooth"
              >
                 {testimonialImages.map((url, i) => (
-                 <div key={i} className="w-[85vw] max-w-[280px] md:w-[42vw] md:max-w-[320px] lg:w-full lg:max-w-none shrink-0 snap-center mx-auto flex justify-center relative hover:z-10">
+                 <div key={i} className="w-[85vw] max-w-[280px] md:w-[42vw] md:max-w-[320px] lg:w-[calc((100%-4.5rem)/4)] lg:max-w-none shrink-0 snap-center mx-auto lg:mx-0 flex justify-center relative hover:z-10">
                     <div 
                       className={`bg-[#1a0e33] p-2.5 md:p-3 border-4 border-[#9d4edd] shadow-[5px_5px_0px_0px_#ff7518] rounded-2xl w-full transition-transform duration-300 hover:scale-105 cursor-pointer ${i % 2 === 0 ? 'rotate-1 hover:rotate-2' : '-rotate-1 hover:-rotate-2'}`}
                       onClick={() => setLightboxData({ index: i, type: 'testimonial' })}
