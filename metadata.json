@@ -1,0 +1,8 @@
+{
+  "name": "Manual Para Desenhar (Edição de Halloween)",
+  "description": "Landing page de vendas estilo sketch para o produto Manual Para Desenhar",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

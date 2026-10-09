@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Patrick Hand', cursive, sans-serif;
+  --color-halloween-bg: #0c0618;
+  --color-halloween-surface: #170d2c;
+  --color-halloween-surface-light: #231442;
+  --color-halloween-orange: #ff7518;
+  --color-halloween-orange-bright: #ff9233;
+  --color-halloween-purple: #9d4edd;
+  --color-halloween-purple-dark: #6a1b9a;
+  --color-halloween-purple-neon: #c77dff;
+}
+
+body {
+  font-family: 'Patrick Hand', cursive, sans-serif;
+  background-color: #0c0618;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(157, 78, 221, 0.22), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 60%, rgba(255, 117, 24, 0.08), transparent 60%),
+    radial-gradient(ellipse 50% 30% at 15% 85%, rgba(157, 78, 221, 0.12), transparent 50%),
+    radial-gradient(circle 2px at 20% 30%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    radial-gradient(circle 2px at 80% 15%, rgba(255, 146, 51, 0.25) 1px, transparent 1px),
+    radial-gradient(circle 2px at 70% 75%, rgba(199, 125, 255, 0.2) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 280px 280px, 320px 320px, 240px 240px;
+  background-attachment: fixed;
+  color: #f3e8ff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes float-spooky {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(2deg); }
+  66% { transform: translateY(-4px) rotate(-2deg); }
+}
+
+@keyframes bat-fly {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4px, -6px) rotate(4deg); }
+  75% { transform: translate(-4px, -3px) rotate(-4deg); }
+}
+
+@keyframes slide-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+@keyframes scale-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes glow-orange {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 117, 24, 0.6)); }
+  50% { filter: drop-shadow(0 0 18px rgba(255, 117, 24, 0.9)); }
+}
+
+@keyframes glow-purple {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(157, 78, 221, 0.5)); }
+  50% { filter: drop-shadow(0 0 18px rgba(199, 125, 255, 0.8)); }
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-spooky {
+  animation: float-spooky 4s ease-in-out infinite;
+}
+
+.animate-bat-fly {
+  animation: bat-fly 3.5s ease-in-out infinite;
+}
+
+.animate-glow-orange {
+  animation: glow-orange 2.5s ease-in-out infinite;
+}
+
+.animate-glow-purple {
+  animation: glow-purple 2.5s ease-in-out infinite;
+}
+
+.animate-slide-x {
+  animation: slide-x 2s ease-in-out infinite;
+}
+
+.animate-scale-pulse {
+  animation: scale-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scale-soft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.animate-scale-soft {
+  animation: scale-soft 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-200%) skewX(-20deg); }
+  25%, 100% { transform: translateX(300%) skewX(-20deg); }
+}
+
+.animate-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 3s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes spin-border {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-border 12s linear infinite;
+}
+
