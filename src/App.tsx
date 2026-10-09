@@ -31,10 +31,11 @@ const faqs = [
 ];
 
 const productImages = [
-  "/images/imagem-01.webp",
-  "/images/imagem-02.webp",
-  "/images/imagem-03.webp",
-  "/images/imagem-04.webp",
+  "/images/halloween/01.webp",
+  "/images/halloween/02.webp",
+  "/images/halloween/03.webp",
+  "/images/halloween/04.webp",
+  "/images/halloween/05.webp"
 ];
 
 const testimonialImages = [
@@ -75,10 +76,10 @@ export default function App() {
   const [direction, setDirection] = useState(0);
   const [purchaseNotification, setPurchaseNotification] = useState<string | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [checkoutUrl, setCheckoutUrl] = useState("https://pay.cakto.com.br/8oqdaiy_1129483");
+  const [checkoutUrl, setCheckoutUrl] = useState("https://pay.cakto.com.br/9zdhfvr");
 
   useEffect(() => {
-    const checkoutBaseUrl = "https://pay.cakto.com.br/8oqdaiy_1129483";
+    const checkoutBaseUrl = "https://pay.cakto.com.br/9zdhfvr";
     const allowedParams = [
       "utm_source",
       "utm_medium",
@@ -388,7 +389,7 @@ export default function App() {
       {/* Header with New Logo - No space on top, 15% smaller */}
       <header className="pt-0 pb-2 px-2 flex justify-center items-center relative z-10 w-full">
         <img 
-          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisOgoznULgXpPiOVJXvMGxHWKVlf_N7tKoW06SRx9uUaGiu6coT5Vm8GWtn6G-kxk-fXbkKBpgmyoNm__6HMnmC420ixk-D0wF3QgaerC0C6EFw_u2TmohQ3FpW-kZEzUG-mg4J_xe1vwKNFZYwM8hWmK-rzKJ0YlrwYZF8R6rWuJXCKSD9yJyhstijls/w640-h360/titulo%20bg%20final.png" 
+          src="/images/halloween/logo.webp" 
           alt="Manual Para Desenhar - Edição de Halloween" 
           width={640}
           height={360}
@@ -405,7 +406,7 @@ export default function App() {
            <div 
              ref={carouselRef}
              onScroll={handleScroll}
-             className="flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-4 md:gap-6 py-4 md:py-6 no-scrollbar px-4 md:px-8 lg:px-0 scroll-smooth"
+             className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-4 md:gap-5 lg:gap-3 py-4 md:py-6 no-scrollbar px-4 md:px-8 lg:px-0 scroll-smooth"
            >
               {productImages.map((url, i) => (
                <div key={i} className="w-[85vw] max-w-[280px] md:w-[42vw] md:max-w-[320px] lg:w-full lg:max-w-none shrink-0 snap-center mx-auto flex justify-center relative hover:z-10">
@@ -465,7 +466,7 @@ export default function App() {
           </h1>
           
           <p className="text-lg md:text-xl mb-6 text-[#e9d5ff] opacity-95 text-center md:text-left leading-relaxed">
-            Escolha formas, olhos misteriosos, bocas assustadoras, cabelos malucos, abóboras, fantasmas, poções, morcegos e centenas de outros elementos para criar ilustrações únicas de Halloween, mesmo que você nunca tenha desenhado!
+            Escolha formas, olhos, bocas, cabelos malucos, roupas e centenas de outros elementos para criar ilustrações únicas de Halloween, mesmo que você nunca tenha desenhado!
           </p>
 
           {/* Pricing & CTA Box */}
@@ -516,7 +517,7 @@ export default function App() {
             </span>
             
             <h3 className="text-2xl md:text-3xl font-bold text-[#ffffff]">
-              Atualizações Vitalícias Sem Truques!
+              Atualizações Vitalícias <br className="sm:hidden" />Sem Truques!
             </h3>
             
             <p className="text-lg md:text-xl text-[#e9d5ff] font-medium leading-relaxed max-w-xl">
@@ -525,10 +526,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* Long Description Sections */}
-        <section className="mb-12 space-y-8 max-w-3xl mx-auto">
-          
-          {/* Para quem é este manual? */}
+        {/* Para quem é este manual? */}
+        <section className="mb-12 max-w-3xl mx-auto">
           <div className="bg-[#190e33] p-6 md:p-9 rounded-3xl border-4 border-[#9d4edd] shadow-[6px_6px_0px_0px_#ff7518] rotate-1">
             <h2 className="text-2xl md:text-3xl font-bold mb-5 flex items-center gap-3 text-[#ffffff]">
               <span className="bg-[#ff7518] text-[#0c0618] p-2 rounded-xl border-3 border-[#0c0618] shadow-[2px_2px_0px_0px_#9d4edd] animate-wiggle inline-block text-xl">
@@ -563,12 +562,54 @@ export default function App() {
               </li>
             </ul>
           </div>
+        </section>
 
-          {/* O que você vai receber? */}
+        {/* Video / Animated GIF Showcase - Veja o Manual em mãos! */}
+        <section className="mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-[#ffffff] flex items-center justify-center gap-2">
+            <span className="animate-wiggle inline-block shrink-0">📖</span>
+            <span>
+              Veja o Manual <br className="sm:hidden" />em mãos!
+            </span>
+            <span className="animate-wiggle inline-block shrink-0">✨</span>
+          </h2>
+          
+          <div className="relative bg-[#1a0d35] border-4 border-[#ff7518] rounded-3xl p-3.5 shadow-[8px_8px_0px_0px_#9d4edd] rotate-1 max-w-sm mx-auto mb-8">
+            <img 
+              src="/images/halloween/manual-animado.webp" 
+              alt="Manual por dentro" 
+              loading="lazy"
+              decoding="async"
+              width={480}
+              height={640}
+              className="w-full aspect-[3/4] object-cover border-4 border-dashed border-[#9d4edd] rounded-2xl" 
+            />
+            
+            {/* Spooky Sketchy decorations */}
+            <div className="absolute -top-6 -right-6 text-4xl animate-bounce">🎃</div>
+            <div className="absolute -bottom-6 -left-6 text-4xl animate-wiggle inline-block">👻</div>
+          </div>
+
+          {/* Buy button right after the GIF */}
+          <div className="flex justify-center px-2">
+            <a 
+              href={checkoutUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-full max-w-sm bg-gradient-to-r from-[#ff7518] to-[#ff9233] hover:from-[#ff8800] hover:to-[#ffa64d] text-[#0c0618] text-xl md:text-2xl font-black py-3.5 md:py-4 px-6 md:px-8 rounded-2xl border-4 border-[#0c0618] shadow-[5px_5px_0px_0px_#9d4edd] hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_#9d4edd] transition-all flex items-center justify-center gap-2.5 animate-shine cursor-pointer"
+            >
+              <ShoppingCart className="w-6 h-6 shrink-0 animate-wiggle text-[#0c0618]" />
+              <span className="text-center leading-tight whitespace-nowrap tracking-wide">COMPRAR</span>
+            </a>
+          </div>
+        </section>
+
+        {/* O que você vai receber no seu Manual? */}
+        <section className="mb-14 max-w-3xl mx-auto">
           <div className="bg-[#1b0d36] p-6 md:p-9 rounded-3xl border-4 border-[#ff7518] border-dashed shadow-[6px_6px_0px_0px_#9d4edd] -rotate-1">
             <h2 className="text-2xl md:text-3xl font-bold mb-4 flex items-center gap-3 text-[#ffffff]">
               <PenTool className="w-8 h-8 text-[#ff9233] animate-wiggle" />
-              O que você vai receber no seu grimório?
+              O que você vai receber no seu Manual?
             </h2>
             <p className="text-lg md:text-xl mb-6 text-[#e9d5ff] leading-relaxed">
               Nada de teorias cansativas ou regras chatas! O Manual funciona como uma biblioteca visual mágica, cheia de referências ilustradas prontas para você misturar, combinar, adaptar e criar seus próprios desenhos com estilo.
@@ -579,7 +620,7 @@ export default function App() {
                   1
                 </span>
                 <span className="text-[#f3e8ff]">
-                  Centenas de olhos arrepiantes, bocas monstrífluas, cabelos espetados, abóboras expressivas, fantasmas fofos, chapéus de bruxa e poções mágicas!
+                  Centenas de olhos arrepiantes, bocas, cabelos, roupas masculinas e femininas, acessórios, casas, animais e muito mais!
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -599,34 +640,6 @@ export default function App() {
                 </span>
               </li>
             </ul>
-          </div>
-        </section>
-
-        {/* Video / Animated GIF Showcase */}
-        <section className="mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-[#ffffff] flex items-center justify-center gap-2">
-            <span className="animate-wiggle inline-block">📖</span>
-            Veja o Manual em mãos!
-            <span className="animate-wiggle inline-block">✨</span>
-          </h2>
-          
-          <div className="relative bg-[#1a0d35] border-4 border-[#ff7518] rounded-3xl p-3.5 shadow-[8px_8px_0px_0px_#9d4edd] rotate-1 max-w-sm mx-auto">
-            <picture>
-              <source srcSet="/images/manual-animado.webp" type="image/webp" />
-              <img 
-                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEge-bYBSyOazpnBOFwSAL6YXSSbnRKwcfufY3gy02kb8_ZVTQX4PTJ-mgCySkXfF4m2o7_sN0unc9R0tN-EiBCoRnw5Tt2K6vSlVmc9ng_45lg3iJCXwFU6OsQCeSRUEfs2OddZ-FrfV_OqzWER9mtxPuwWsd4g5hyphenhyphenSzCWmcqkRKrn4NKu3UGNz1G7R0hQ/s0/novo%20gif%20manual%20(reduzindo).gif" 
-                alt="Manual por dentro" 
-                loading="lazy"
-                decoding="async"
-                width={480}
-                height={641}
-                className="w-full aspect-[3/4] object-cover border-4 border-dashed border-[#9d4edd] rounded-2xl" 
-              />
-            </picture>
-            
-            {/* Spooky Sketchy decorations */}
-            <div className="absolute -top-6 -right-6 text-4xl animate-bounce">🎃</div>
-            <div className="absolute -bottom-6 -left-6 text-4xl animate-wiggle inline-block">👻</div>
           </div>
         </section>
 
@@ -870,7 +883,7 @@ export default function App() {
 
         <div className="flex justify-center mb-6 mt-8">
           <img 
-            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisOgoznULgXpPiOVJXvMGxHWKVlf_N7tKoW06SRx9uUaGiu6coT5Vm8GWtn6G-kxk-fXbkKBpgmyoNm__6HMnmC420ixk-D0wF3QgaerC0C6EFw_u2TmohQ3FpW-kZEzUG-mg4J_xe1vwKNFZYwM8hWmK-rzKJ0YlrwYZF8R6rWuJXCKSD9yJyhstijls/w640-h360/titulo%20bg%20final.png" 
+            src="/images/halloween/logo.webp" 
             alt="Manual Para Desenhar - Edição de Halloween" 
             loading="lazy"
             decoding="async"
@@ -881,10 +894,11 @@ export default function App() {
         </div>
 
         <p className="mt-4 font-medium text-base text-[#ffffff]">
-          🎃 Manual Para Desenhar - Edição Especial de Halloween 🎃
+          Manual Para Desenhar - Edição Especial de Halloween
         </p>
         <p className="mt-1">Todos os direitos reservados - Ateliê do Ju</p>
         <p className="text-xs text-[#c4b5fd]/60 mt-1">CNPJ 51.041.767/0001-08</p>
+        <div className="mt-3 text-xl">🎃</div>
       </footer>
 
       {/* Fake Purchase Notification (Halloween Themed) */}
