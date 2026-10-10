@@ -77,9 +77,11 @@ export default function App() {
   const [purchaseNotification, setPurchaseNotification] = useState<string | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [checkoutUrl, setCheckoutUrl] = useState("https://pay.cakto.com.br/9zdhfvr");
+  const [comboCheckoutUrl, setComboCheckoutUrl] = useState("https://pay.cakto.com.br/pfpgcid");
 
   useEffect(() => {
     const checkoutBaseUrl = "https://pay.cakto.com.br/9zdhfvr";
+    const comboBaseUrl = "https://pay.cakto.com.br/pfpgcid";
     const allowedParams = [
       "utm_source",
       "utm_medium",
@@ -112,13 +114,16 @@ export default function App() {
       }
 
       const newCheckoutUrl = new URL(checkoutBaseUrl);
+      const newComboUrl = new URL(comboBaseUrl);
       allowedParams.forEach(key => {
         if (storedParams[key]) {
           newCheckoutUrl.searchParams.set(key, storedParams[key]);
+          newComboUrl.searchParams.set(key, storedParams[key]);
         }
       });
 
       setCheckoutUrl(newCheckoutUrl.toString());
+      setComboCheckoutUrl(newComboUrl.toString());
     } catch (e) {
       console.error("Error setting UTM params", e);
     }
@@ -649,12 +654,91 @@ export default function App() {
             href={checkoutUrl} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="w-full max-w-sm bg-gradient-to-r from-[#9d4edd] to-[#b5179e] hover:from-[#aa58ea] hover:to-[#c726b0] text-white text-xl md:text-2xl font-bold py-3.5 md:py-4 px-4 md:px-8 rounded-2xl border-4 border-[#0c0618] shadow-[5px_5px_0px_0px_#ff7518] hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_#ff7518] transition-all flex items-center justify-center gap-2 animate-shine cursor-pointer"
+            className="w-full max-w-md bg-gradient-to-r from-[#9d4edd] to-[#b5179e] hover:from-[#aa58ea] hover:to-[#c726b0] text-white py-3.5 md:py-4 px-3 sm:px-6 md:px-8 rounded-2xl border-4 border-[#0c0618] shadow-[5px_5px_0px_0px_#ff7518] hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_#ff7518] transition-all flex items-center justify-center gap-2 animate-shine cursor-pointer"
           >
-            <ShoppingCart className="w-6 h-6 shrink-0 animate-wiggle" />
-            <span className="text-center leading-tight whitespace-nowrap">QUERO MEU MANUAL AGORA</span>
+            <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 animate-wiggle text-white" />
+            <span className="text-center leading-tight whitespace-nowrap text-base sm:text-lg md:text-xl font-black">QUERO O MANUAL DE HALLOWEEN</span>
           </a>
         </div>
+
+        {/* Mini Sessão COMBO: Direta ao ponto, padrão visual do site com destaque laranja */}
+        <section className="mb-14 max-w-4xl mx-auto px-4">
+          <div className="bg-[#ff7518] p-6 sm:p-8 md:p-10 rounded-3xl border-4 border-[#0c0618] shadow-[7px_7px_0px_0px_#9d4edd] text-center">
+            {/* 5 Estrelas no estilo da primeira sessão, roxo escuro para contraste com o fundo laranja */}
+            <div className="flex items-center justify-center gap-1.5 mb-2.5 text-[#240935] drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="fill-current w-5 h-5 md:w-6 md:h-6 animate-scale-pulse" style={{ animationDelay: `${i * 120}ms` }} />
+              ))}
+            </div>
+
+            {/* Título em uma única linha no tamanho padrão das outras sessões */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center text-[#0c0618] whitespace-nowrap tracking-tight">
+              Que tal levar o combo?
+            </h2>
+
+            {/* Subtítulo em laranja sublinhado de roxo ondulado igual a "Assustadoramente Incríveis!" */}
+            <div className="mb-6">
+              <span className="text-lg sm:text-xl md:text-2xl font-black text-[#0c0618] underline decoration-wavy decoration-[#9d4edd] tracking-wide inline-block">
+                MANUAL ORIGINAL + HALLOWEEN
+              </span>
+            </div>
+
+            {/* Conteúdo: No desktop lado a lado (imagem e oferta), no mobile um em cima do outro */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 max-w-3xl mx-auto">
+              {/* Imagem limpa sem borda nem background */}
+              <div className="w-full max-w-[210px] sm:max-w-[240px] md:max-w-[280px] shrink-0">
+                <img 
+                  src="/images/halloween/combo-manual.webp" 
+                  alt="Combo Manual para Desenhar Original e Halloween" 
+                  loading="lazy"
+                  decoding="async"
+                  width={400}
+                  height={400}
+                  className="w-full h-auto object-contain" 
+                />
+              </div>
+
+              {/* Box de Oferta com background laranja seguindo o padrão da primeira sessão */}
+              <div className="w-full flex flex-col sm:flex-row md:flex-col items-center justify-between md:justify-center gap-4 bg-[#ff7e22] p-4 sm:p-5 md:p-6 rounded-2xl border-2 border-dashed border-[#0c0618] shadow-[3px_3px_0px_0px_#0c0618] relative text-left">
+                <div className="flex flex-col items-center sm:items-start md:items-center shrink-0 w-full sm:w-auto md:w-full text-center sm:text-left md:text-center">
+                  <span className="line-through text-[#0c0618]/70 text-[18px] font-bold">De R$ 52,80</span>
+                  <div className="flex items-baseline justify-center gap-1 my-0.5">
+                    <span 
+                      className="text-[32px] sm:text-[36px] md:text-[38px] font-black text-[#0c0618]"
+                      style={{
+                        WebkitTextStroke: '1.5px #c77dff',
+                        paintOrder: 'stroke fill',
+                        textShadow: '0 0 10px rgba(199, 125, 255, 0.45), 2px 2px 0px rgba(157, 78, 221, 0.3)'
+                      }}
+                    >
+                      Por R$ 47,90
+                    </span>
+                  </div>
+                  <span className="text-xs sm:text-sm text-[#0c0618]/85 font-bold">Acesso vitalício aos dois manuais</span>
+                </div>
+
+                {/* Botão de Compra com badge de 10% OFF com background roxo claro */}
+                <div className="relative w-full sm:w-auto md:w-full shrink-0 mt-1 sm:mt-0">
+                  <div className="absolute -top-3.5 -right-2 sm:-right-3 md:-right-2 z-20 pointer-events-none rotate-12">
+                    <span className="inline-block bg-[#c77dff] text-[#0c0618] text-xs sm:text-sm font-black px-2.5 sm:px-3 py-1 rounded-full border-2 border-[#0c0618] shadow-[2px_2px_0px_0px_#240935] animate-scale-pulse tracking-wide">
+                      🎃 10% OFF
+                    </span>
+                  </div>
+
+                  <a 
+                    href={comboCheckoutUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-full bg-[#0c0618] hover:bg-[#1a0e33] text-white hover:text-[#ff7518] text-lg sm:text-xl font-black py-3.5 px-6 rounded-2xl border-4 border-[#0c0618] shadow-[4px_4px_0px_0px_#9d4edd] hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_#9d4edd] transition-all flex items-center justify-center gap-2 animate-shine cursor-pointer"
+                  >
+                    <ShoppingCart className="w-5 h-5 shrink-0 animate-wiggle text-[#ff7518]" />
+                    <span className="whitespace-nowrap tracking-wide">QUERO O COMBO!!</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Depoimentos Recentes */}
         <section className="mb-14">
