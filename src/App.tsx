@@ -1,4 +1,4 @@
-import { ShoppingCart, Star, ShieldCheck, ArrowRight, PenTool, X, ChevronLeft, ChevronRight, MessageCircle, ChevronDown, Sparkles, Ghost, Flame } from 'lucide-react';
+import { ShoppingCart, Star, ShieldCheck, ArrowRight, PenTool, X, ChevronLeft, ChevronRight, MessageCircle, ChevronDown, Sparkles, Ghost, Flame, Heart } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -141,10 +141,27 @@ export default function App() {
     ];
 
     let timeoutId: NodeJS.Timeout;
+    let isCombo = Math.random() > 0.5;
+    let consecutiveCount = 0;
 
     const showRandomNotification = () => {
       const randomName = names[Math.floor(Math.random() * names.length)];
-      setPurchaseNotification(`${randomName} comprou o Manual de Halloween`);
+      const productText = isCombo ? "o COMBO de Manuais" : "o Manual de Halloween";
+      setPurchaseNotification(`${randomName} comprou ${productText}`);
+
+      // Intercala de maneira orgânica (garante variação sem ficar repetitivo)
+      if (consecutiveCount >= 1) {
+        isCombo = !isCombo;
+        consecutiveCount = 0;
+      } else {
+        const switchProduct = Math.random() < 0.7;
+        if (switchProduct) {
+          isCombo = !isCombo;
+          consecutiveCount = 0;
+        } else {
+          consecutiveCount++;
+        }
+      }
 
       // Hide after 3.2 seconds
       setTimeout(() => {
@@ -994,8 +1011,12 @@ export default function App() {
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             className="fixed bottom-6 left-6 z-50 bg-[#1f0e3a] text-[#ffffff] px-5 py-3 rounded-2xl border-3 border-[#ff7518] shadow-[5px_5px_0px_0px_#0c0618] flex items-center gap-3 font-bold text-sm md:text-base pointer-events-none"
           >
-            <div className="w-8 h-8 bg-[#ff7518] rounded-full flex items-center justify-center shrink-0 border border-[#0c0618]">
-              <span className="text-base">🎃</span>
+            <div className={`w-8 h-8 ${purchaseNotification.includes("COMBO") ? "bg-[#5a189a] border-[#c77dff]" : "bg-[#ff7518] border-[#0c0618]"} rounded-full flex items-center justify-center shrink-0 border`}>
+              {purchaseNotification.includes("COMBO") ? (
+                <Heart className="w-4 h-4 fill-[#c77dff] text-[#c77dff]" />
+              ) : (
+                <span className="text-base">🎃</span>
+              )}
             </div>
             <span className="text-[#f3e8ff]">{purchaseNotification}</span>
           </motion.div>
